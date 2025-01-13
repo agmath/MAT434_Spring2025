@@ -1,0 +1,42 @@
+---
+title: Outline for EDA
+author: 
+  - name: Adam Gilbert
+    email: a.gilbert1@snhu.edu
+    affiliations: 
+      - name: Southern New Hampshire University
+format: html
+date: 9/15/2024
+date-modified: today
+date-format: long
+theme: flatly
+toc: true
+---
+
+This document just contains an outline for what we'll do today.
+
+## Code Chunk Options
+
+Show `include`, `message`, `echo`, `code-fold`...
+
+## Inline R
+
+Show how to print out the number of rows and columns using inline R. Try using it throughout!
+
+## Skimming Data
+
+Show `head()`, `glimpse()`, and `{skimr}`'s `skim()` function to gain some high-level insights into the MLB data
+
+## Split the Data
+
+Obtain *training* and *test* sets
+
+## Investigate the Training Data
+
+Before doing meaningful analysis I'll show how to use `filter()` and `select()` and then students will direct the questions we investigate.
+
+Be sure to show `mutate()`, `summarize()`, and `group_by()`
+
+Reiterate on all changes being temporary unless items are explicitly stored
+
+
