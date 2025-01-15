@@ -27,6 +27,8 @@ library(skimr)
 
 hits <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/refs/heads/master/data/classification/battedballs.csv")
 parks <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/refs/heads/master/data/classification/park_dimensions.csv")
+
+theme_set(theme_bw(base_size = 14))
 ```
 
 ## Exploring Our Data
@@ -175,10 +177,49 @@ train %>%
   )
 ```
 
+### Data Viz
 
+```{r}
+train %>%
+  ggplot() + 
+  geom_histogram(aes(x = pitch_mph)) + 
+  labs(
+    title = "Pitch Speeds",
+    x = "Pitch Speed (mph)",
+    y = ""
+  )
+```
 
+Without ChatGPT help...
 
+```{r}
+train %>%
+  ggplot() + 
+  geom_histogram(aes(x = pitch_mph, y = after_stat(density))) +
+  geom_density(aes(x = pitch_mph))
+```
 
+With ChatGPT enhancements...
+
+```{r}
+train %>%
+  filter(pitch_name != "Forkball") %>%
+  ggplot(aes(x = pitch_mph)) + 
+  geom_histogram(aes(y = after_stat(density)), binwidth = 2, fill = "#377EB8", color = "black", alpha = 0.7) +
+  geom_density(aes(color = pitch_name, fill = pitch_name), alpha = 0.4, size = 1) +
+  facet_wrap(~ pitch_name, scales = "free_y") +
+  labs(
+    title = "Pitch Speeds by Pitch Type",
+    x = "Pitch Speed (mph)",
+    y = "Density",
+    caption = "Data Source: Baseball Dataset"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    strip.text = element_text(size = 12, face = "bold"),
+    legend.position = "none"
+  )
+```
 
 
 
